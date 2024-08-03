@@ -10,19 +10,21 @@
     <div class="container">
         <h3>All Chats!</h3>
         <form method="GET" action="/chats/new">
-            <button>New Chat</button>
+            <button class="new-chat">New Chat</button>
         </form>
         <% for(let chat of chats) {  %>
         <div class="chat">
             <p class="from">From: <%= chat.from %></p>
             <div class="msg">
                 <p><%= chat.message %></p>
-                <form method="get" action="/chats/<%= chat._id %>/edit">
-                    <button>Edit</button>
-                </form>
-                <form method="post" action="/chats/<%= chat._id %>?_method=Delete">
-                    <button>Delete</button>
-                </form>
+                <div class="button-group">
+                    <form method="get" action="/chats/<%= chat._id %>/edit">
+                        <button>Edit</button>
+                    </form>
+                    <form method="post" action="/chats/<%= chat._id %>?_method=Delete">
+                        <button>Delete</button>
+                    </form>
+                </div>
             </div>
             <p class="to">Received by <%= chat.to %></p>
             <hr>

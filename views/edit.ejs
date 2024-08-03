@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/style.css">
     <title>Edit Message</title>
 </head>
 <body>
-    <p>Edit Your Message: <%= chat._id %> </p>
-    <p>This chat was sent from <B><%= chat.from %></B> to <B><%= chat.to %></B></p>
-    <form method="post" action="/chats/<%= chat._id %>?_method=PUT">
-       <textarea name="message" rows="7" cols="50"> <%= chat.message %></textarea>
-       <button>Edit</button>
-    </form>
+    <div class="edit-container">
+        <p class="edit-header">Edit Your Message: <%= chat._id %></p>
+        <p class="edit-subheader">This chat was sent from <b><%= chat.from %></b> to <b><%= chat.to %></b></p>
+        <form class="edit-form" method="post" action="/chats/<%= chat._id %>?_method=PUT">
+            <textarea name="message" rows="7" cols="50"><%= chat.message %></textarea>
+            <button type="submit">Edit</button>
+        </form>
+    </div>
 </body>
-</html> 
+</html>
