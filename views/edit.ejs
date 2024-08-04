@@ -16,7 +16,7 @@
             min-height: 100vh;
         }
 
-        .container, .edit-container {
+        .container, .edit-container, .form-container {
             width: 100%;
             max-width: 800px;
         }
@@ -29,13 +29,6 @@
             border-bottom: 2px solid #4a90e2;
             display: inline-block;
             padding-bottom: 10px;
-        }
-
-        .edit-subheader {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.2em;
-            color: #4a4a4a;
         }
 
         .new-chat {
@@ -115,20 +108,22 @@
             box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.4);
         }
 
-        textarea {
+        input, textarea {
             width: 100%;
             max-width: 100%;
-            min-width: 100%;
             border: 1px solid #ccc;
             border-radius: 5px;
             padding: 10px;
             font-size: 1em;
             font-family: 'Helvetica Neue', sans-serif;
-            resize: vertical;
             margin-bottom: 20px;
         }
 
-        .edit-form {
+        textarea {
+            resize: vertical;
+        }
+
+        form {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -158,15 +153,16 @@
             }
         }
     </style>
-    <title>Edit Message</title>
+    <title>Write New Chat</title>
 </head>
 <body>
-    <div class="edit-container">
-        <p class="edit-header">Edit Your Message: <%= chat._id %></p>
-        <p class="edit-subheader">This chat was sent from <b><%= chat.from %></b> to <b><%= chat.to %></b></p>
-        <form class="edit-form" method="post" action="/chats/<%= chat._id %>?_method=PUT">
-            <textarea name="message" rows="7" cols="50"><%= chat.message %></textarea>
-            <button type="submit">Edit</button>
+    <div class="form-container">
+        <h3>Write New Chat</h3>
+        <form method="post" action="/chats">
+            <input placeholder="Add receiver" name="to">
+            <textarea name="message" rows="7" cols="50" placeholder="Write your message here"></textarea>
+            <input placeholder="Who are you?" name="from">
+            <button>Send</button>
         </form>
     </div>
 </body>
