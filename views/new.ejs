@@ -3,15 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            background-color: #f7f9fc;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container, .edit-container, .form-container {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        h3, .edit-header {
+            color: #4a4a4a;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 2.2em;
+            border-bottom: 2px solid #4a90e2;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .new-chat {
+            display: block;
+            margin: 0 auto 20px;
+        }
+
+        .chat {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #4a90e2;
+        }
+
+        .chat:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            z-index: 1;
+            position: relative;
+        }
+
+        .chat p {
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .chat .from, .chat .to {
+            font-weight: bold;
+            color: #4a90e2;
+        }
+
+        .chat .msg {
+            background: #f0f4f8;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 10px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .chat hr {
+            border: none;
+            border-top: 1px solid #e0e4e8;
+            margin: 20px 0 0;
+        }
+
+        button {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #357ab7;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            background-color: #2c6397;
+            transform: translateY(0);
+        }
+
+        button:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.4);
+        }
+
+        input, textarea {
+            width: 100%;
+            max-width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 1em;
+            font-family: 'Helvetica Neue', sans-serif;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            h3, .edit-header {
+                font-size: 1.8em;
+            }
+
+            .chat {
+                padding: 15px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+                padding: 12px 0;
+                font-size: 1.2em;
+            }
+        }
+    </style>
     <title>Write New Chat</title>
 </head>
 <body>
-    <h3>Write New Chat</h3>
-    <form method="post" action="/chats">
-        <input placeholder="Add receiver" name="to">
-        <textarea name="message"> Write your message here </textarea>
-        <input placeholder="Who are you?" name="from">
-      <button>Send</button>
-    </form>
+    <div class="form-container">
+        <h3>Write New Chat</h3>
+        <form method="post" action="/chats">
+            <input placeholder="Add receiver" name="to">
+            <textarea name="message" rows="7" cols="50">Write your message here</textarea>
+            <input placeholder="Who are you?" name="from">
+            <button>Send</button>
+        </form>
+    </div>
 </body>
 </html>
